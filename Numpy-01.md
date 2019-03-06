@@ -143,6 +143,15 @@ import numpy as np
     np.clip(array, 0, 255)
     ```
     该方法运用在数据约束中,例如对于图像数据,所有的数值均应该在0~255之间.对于不合规的数据,我们能够使用该方法进行数据的约束.
+13. 展开矩阵为向量
+    ```python3
+    array = np.array([[1, 2, 3], [2, 3, 4]])
+    print(array.flatten())
+    # output:
+    # [1, 2, 3, 2, 3, 4]
+    ```
+
+
 ---
 # Numpy运算
 
@@ -200,4 +209,43 @@ import numpy as np
    np.transpose(array)
    # 有等价写法
    array.T
+   ```
+
+## 矩阵索引
+1. 常规索引方法
+   ```python3
+   array[0]
+   array[0][1]
+   ```
+   与python类似,使用中括号[]直接进行索引
+2. 等价索引方法
+   ```python3
+   array[0][1]
+   # or 
+   array[0, 1]
+   ```
+3. 矩阵分片
+   ```python3
+   # 与python中的list分片类似,采用:语法
+   # 冒号左侧为闭,右侧为开
+   array[1:3]
+   array[1][1:3]
+   array[1, 1:3]
+   ```
+4. 矩阵遍历
+   ```python3
+   # 按行遍历
+   for row in array:
+        print(row)
+   # 按列便利
+   # 把矩阵转置后遍历行
+   for col in array.T:
+        print(col)
+   ```
+5. 元素遍历
+   ```python3
+   # 先将矩阵展开,然后再遍历
+   # array.flat 返回一个迭代器
+   for item in array.flat:
+        print(item)
    ```
