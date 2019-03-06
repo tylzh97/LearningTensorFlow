@@ -93,7 +93,56 @@ import numpy as np
    ```python3
    np.max(array)
    ```
-
+5. 获取最小值、最大值的的索引
+   ```python3
+   array = np.arange(1, 13)
+   array = array.reshape( (3, 4) )
+   # 获取最小值索引
+   min_p = np.argmin(array)
+   # 获取最大值索引
+   max_p = np.argmax(array)
+   ```
+   获取的最大最小值并非其在矩阵中的位置,而是其一维索引位置.
+6. 计算矩阵均值
+   ```python3
+   # 类方法
+   np.mean(array)
+   np.average(array)
+   # 对象方法
+   array.mean()
+   ```
+7. 获取矩阵中位数
+   ```python3
+   np.median(array)
+   ```
+8. 获取累计向量
+   ```python3
+   np.cumsun(array)
+   ```
+   该方法仅能获取一维向量
+9. 计算矩阵差
+    ```python3
+    np.diff(array)
+    ```
+    该方法会改变矩阵的形状.例如:输入3*4的矩阵,只会输出3*3的矩阵.
+10. 获取非零值
+    ```python3
+    np.nonzero(array)
+    ```
+    该方法分别输出非0值的行数与列数,输出到两个矩阵中.
+11. 排序
+    ```python3
+    # 按行升序
+    array.sort()
+    # 按列升序
+    array.sort(axis=0)
+    ```
+12. 边界约束(截取)
+    ```python3
+    # 将矩阵中小于0的元素约束成0;大于255的元素约束成255
+    np.clip(array, 0, 255)
+    ```
+    该方法运用在数据约束中,例如对于图像数据,所有的数值均应该在0~255之间.对于不合规的数据,我们能够使用该方法进行数据的约束.
 ---
 # Numpy运算
 
@@ -114,7 +163,7 @@ import numpy as np
    # 对应元素乘法运算
    mul = a * b
    # 对应元素除法运算
-   div = a / b
+   div = a / bv
    ```
 3. 简单函数运算
    ```python3
@@ -146,4 +195,9 @@ import numpy as np
    # 同样,a·b运算有等价写法
    dmul2 = a.dot(b)
    ```
-2. TODO
+2. 矩阵转置
+   ```python3
+   np.transpose(array)
+   # 有等价写法
+   array.T
+   ```
