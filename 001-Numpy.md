@@ -249,3 +249,57 @@ import numpy as np
    for item in array.flat:
         print(item)
    ```
+6. 矩阵合并
+   ```python3
+   # 垂直合并
+   # vertical stack
+   np.vstack( (array1, ayyar2) )
+   # 水平合并
+   # horizontal stack
+   np.hstack( (array1, array2) )
+   # 指定维度合并
+   np.concatenate( (array1, array2), axis=1 )
+   ```
+7. 向量转置
+   <br>特别注意,对于一维向量而言,array.T并不会转置矩阵,因为其本质上仅有一个维度;而array.T操作实际上为reshape操作,单维度不能发生变化.
+   <br>我们需要对向量进行升维操作后,才能进行转置操作
+   ```python3
+   array = np.array([1,2,3,4])
+   # np.newaxis: 创建新维度
+   print(array[:, np.newaxis])
+   # output:
+   """
+   array([  [1],
+            [2],
+            [3],
+            [4] ] )
+   """
+   # 更好的,我们能够矩阵的shape参数进行赋值
+   arrap.shape = (4, 1)
+   ```
+
+## 矩阵分割
+1. 等距分割
+   ```python3
+   # 将矩阵array横向等距分成2块
+   np.split(array, 2, axis=1)
+   # 垂直分割
+   # 垂直分割成等距两块
+   np.vsplit(array, 2)
+   # 水平分割
+   # 水平分割成等距两块
+   np.hsplit(array, 2)
+   ```
+   注意:使用此方法时,若不能等距分割,则会抛出一个`ValueError`异常!
+2. 不等距分割
+   ```python3
+   # 将矩阵array横向分割成3块,若不能等距分割,则除第一块外其余块等距.
+   np.array_split(array, 3, axis=1)
+   ```
+   注意:使用此方法分割后的结果首块最大!
+
+## 矩阵的赋值
+1. '='号赋值
+   <br>传递引用,即仅传递了对象指针,赋值后id相同
+2. copy方法
+   <br>深度拷贝,赋值后id不同
